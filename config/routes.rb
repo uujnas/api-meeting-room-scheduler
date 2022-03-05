@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'test/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -9,4 +10,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get '/welcome-msg', to: 'welcomes#show'
+  get '/test', to: 'test#index'
 end
