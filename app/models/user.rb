@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum role: %i[admin participants]
+  enum role: %i[admin participant]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
