@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   # before_action :is_admin?, only: %i[create]
-  before_action :find_room, only: %i[show update destroy ]
+  before_action :find_room, only: %i[show update destroy]
 
   def index
     rooms = Room.all
@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
   def update
     if is_admin?
       @room.update(room_params)
-      render json: { meassage: 'Record Updated.', room: @room}, status: :ok
+      render json: { message: 'Record Updated.', room: @room }, status: :ok
     else
       render json: { message: 'You are not allowed to update this record.' }, status: :unauthorized
     end
@@ -52,7 +52,11 @@ class RoomsController < ApplicationController
     current_user.admin?
   end
 
-  def find_room 
-    @room = Room.find(params[:id]) rescue { message: 'record not found.' }
+  def find_room
+    @room = begin
+      Room.find(params[:id])
+    rescue StandardError
+      { message: 'record not found.' }
+    end
   end
 end
