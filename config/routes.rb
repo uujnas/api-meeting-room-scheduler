@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :schedules
-  resources :rooms
+  resources :rooms do
+    resources :schedules
+  end
 
   devise_for :users, defaults: { formats: :json },
   controllers: {
