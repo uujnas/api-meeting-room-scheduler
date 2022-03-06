@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[ show update destroy ]
 
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.where(room_id: params[:room_id])
 
     render json: @meetings, status: :ok
   end
@@ -34,6 +34,11 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
+  end
+
+  def all_meetings
+    @meetings = Meeting.all
+    render json: @meetings, status: :ok
   end
 
   private
