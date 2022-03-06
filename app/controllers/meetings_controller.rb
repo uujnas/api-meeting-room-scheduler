@@ -16,6 +16,7 @@ class MeetingsController < ApplicationController
     @meeting.room_id = params[:room_id]
 
     if @meeting.save
+      save_members
       render json: @meeting, status: :created
     else
       render json: @meeting.errors, status: :unprocessable_entity
@@ -24,6 +25,7 @@ class MeetingsController < ApplicationController
 
   def update
     if @meeting.update(meeting_params)
+      save_members
       render json: @meeting
     else
       render json: @meeting.errors, status: :unprocessable_entity
@@ -41,6 +43,14 @@ class MeetingsController < ApplicationController
   end
 
   def meeting_params
-    params.require(:meeting).permit(:subject, :members, :room_id)
+    params.require(:meeting).permit(:subject, :room_id, :members=> [:email])
+  end
+
+  def save_members
+    params[:meeting][:members].each do |member|
+      puts member
+      @meeting.members.push member
+    end
+    @meeting.save!
   end
 end
