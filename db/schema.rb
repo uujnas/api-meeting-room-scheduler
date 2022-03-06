@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_06_090205) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_06_093150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,14 +40,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_090205) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string "title"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "start_time"
     t.time "end_time"
-    t.bigint "room_id", null: false
-    t.index ["room_id"], name: "index_schedules_on_room_id"
+    t.bigint "meeting_id", null: false
+    t.index ["meeting_id"], name: "index_schedules_on_meeting_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,5 +67,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_090205) do
 
   add_foreign_key "meetings", "rooms"
   add_foreign_key "rooms", "users"
-  add_foreign_key "schedules", "rooms"
+  add_foreign_key "schedules", "meetings"
 end
