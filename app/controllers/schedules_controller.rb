@@ -13,7 +13,7 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
-    @schedule.room_id = params[:room_id]
+    @schedule.meeting_id = params[:meeting_id]
 
     if @schedule.save
       render json: @schedule, status: :created
