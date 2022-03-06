@@ -54,8 +54,10 @@ class MeetingsController < ApplicationController
   def save_members
     params[:meeting][:members].each do |member|
       puts member
-      @meeting.members.push member
+      @member = @meeting.members.push member
+      if @meeting.save!
+        MemberMailer.members_added_on_meeting(@member, @meeting).deliver_now
+      end
     end
-    @meeting.save!
   end
 end
