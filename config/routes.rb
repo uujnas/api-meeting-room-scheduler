@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  resources :rooms
+  get '/rooms/meetings', to: 'meetings#all_meetings'
+  
+  resources :rooms do
+    resources :meetings do
+      resources :schedules
+    end
+  end
+
 
   devise_for :users, defaults: { formats: :json },
   controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
-  }  
+  }
   get '/welcome-msg', to: 'welcomes#show'
 end

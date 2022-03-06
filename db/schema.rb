@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_05_094010) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_06_093150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,12 +22,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_05_094010) do
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
+  create_table "meetings", force: :cascade do |t|
+    t.string "subject"
+    t.text "members", default: [], array: true
+    t.bigint "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_meetings_on_room_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "desc"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "meeting_id", null: false
+    t.index ["meeting_id"], name: "index_schedules_on_meeting_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,5 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_05_094010) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meetings", "rooms"
   add_foreign_key "rooms", "users"
+  add_foreign_key "schedules", "meetings"
 end
