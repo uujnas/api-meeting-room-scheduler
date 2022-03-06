@@ -12,4 +12,8 @@ RSpec.describe Room, type: :model do
     room.desc = 'Ongoing meeting is about Unit testing with SS team'
     expect(room).to be_valid
   end
+
+  context 'associations' do
+    it { should belong_to(:user).class_name('User')}
+  end
 end
