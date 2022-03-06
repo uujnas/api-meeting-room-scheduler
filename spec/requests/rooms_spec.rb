@@ -57,5 +57,15 @@ RSpec.describe 'Rooms', type: :request do
       end
     end
 
+    describe 'DELETE /destroy' do
+      it 'destroy the request room' do
+        room = Room.new(valid_attributes)
+        room.save
+        expect do
+          delete room_url(room)
+        end.to change(Room, :count).by(0)
+      end
+    end
+
   end
 end
