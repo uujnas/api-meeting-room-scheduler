@@ -7,5 +7,4 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }  
   get '/welcome-msg', to: 'welcomes#show'
-  get '/test', to: 'test#index'
 end
