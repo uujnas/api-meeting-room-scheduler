@@ -67,4 +67,31 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  def create_user
+    user = User.new(
+      email: 'sanju@gmail.com',
+      password: 'password',
+      role: 'admin',
+      address: 'ktm'
+    )
+    user.save!
+    user
+  end
+
+  def get_header(login)
+    jwt = get_jwt(login)
+    {
+      'Accept': 'application/json',
+      'Content-Type': 'appication/json',
+      'Http_JWT_AUD': 'test',
+      'Authorization': "Bearer #{jwt}"
+    }
+  end
+
+  def get_jwt(login)
+    headers = { 'HTTP_JWT_AUD': 'test' }
+    post '/users/sign_in', params: { user: { email: login, password: 'password' } }, headers: headers
+    JSON.parse(response.body)
+  end
 end
