@@ -67,5 +67,31 @@ RSpec.describe 'Rooms', type: :request do
       end
     end
 
+    describe 'Update /patch' do
+      context 'with valid parameters' do
+        let(:new_attributes) do
+          {
+            id: 1,
+            desc: 'Meeting  ongoing project'
+          }
+          it 'updates the requested room' do
+            room = Room.new(valid_attributes)
+            room.save!
+            patch room_url(room), params: { room: new_attributes }
+            room.reload
+            skip('Add assertions for update state')
+          end
+        end
+      end
+    end
+  end
+
+  context 'unauthenticate user' do
+    describe 'GET /index' do
+      it 'returns status 401' do
+        get '/rooms'
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 end
