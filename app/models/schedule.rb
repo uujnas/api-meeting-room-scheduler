@@ -1,5 +1,5 @@
 class Schedule < ApplicationRecord
-  belongs_to :room
+  belongs_to :meeting
 
   validates :title, presence: true, length: { minimum: 5 }
   validates_presence_of :date, :start_time, :end_time
