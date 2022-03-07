@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :is_admin?, only: %i[create]
   before_action :find_room, only: %i[show update destroy]
 
   def index
@@ -48,7 +47,6 @@ class RoomsController < ApplicationController
   end
 
   def is_admin?
-    # p current_user
     current_user.admin?
   end
 

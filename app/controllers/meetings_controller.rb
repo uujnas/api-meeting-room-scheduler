@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: %i[ show update destroy ]
+  before_action :set_meeting, only: %i[show update destroy]
 
   def index
     @meetings = Meeting.where(room_id: params[:room_id])
@@ -48,7 +48,7 @@ class MeetingsController < ApplicationController
   end
 
   def meeting_params
-    params.require(:meeting).permit(:subject, :room_id, :members=> [:email])
+    params.require(:meeting).permit(:subject, :room_id, :members => [:email])
   end
 
   def save_members
