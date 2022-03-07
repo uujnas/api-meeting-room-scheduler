@@ -1,0 +1,27 @@
+<h4>Dear Sir/Madam </h4>
+
+<p> Hope you are doing well! </p>
+<p> You have been added to the meeting <h5><%= @meeting.subject %></h5></p>
+<p> The joining link is <%= @url %></p> 
+
+<h5>Other Details:</h5>
+<ul>
+  <li>Room no: <%= @meeting.room_id %></li>
+  <li>Date: <%= @meeting.schedule.date %></li>
+  <li>Start time: <%= @meeting.schedule.start_time.strftime('%H:%M %p') %></li>
+  <li>End time: <%= @meeting.schedule.end_time.strftime('%H:%M %p') %></li>
+  <li>Members:</li>
+  <% @meeting.members.each do |member| %>
+    <ul>
+      <li><%= member %></li>
+    </ul>
+  <% end %>
+</ul>
+
+<br>
+<p>Thank you </p>
+<br>
+
+<h6>Regards</h6>
+<p>Sanju Basnet</p>
+<p>9812345678</p>
