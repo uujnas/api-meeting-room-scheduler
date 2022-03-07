@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: %i[ show update destroy ]
+  before_action :set_schedule, only: %i[show update destroy]
 
   def index
     @schedules = Schedule.all
