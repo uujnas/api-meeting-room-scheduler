@@ -6,8 +6,8 @@ services:
     ports:
       - '5434:5434'
     environment:
-      - POSTGRES_USER=your_postgres_username
-      - POSTGRES_PASSWORD=your_postgres_password
+      - POSTGRES_USER=sanju
+      - POSTGRES_PASSWORD=20201116
     volumes:
       - dbdata:/var/lib/postgresql/data
 

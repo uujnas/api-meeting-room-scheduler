@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Rooms', type: :request do
   let(:valid_attributes) do
     {
-      id: '1',
       desc: 'This room is for ROR traniee',
       user_id: create_user.id
     }
