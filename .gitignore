@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-./credentials.yml.enc
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -29,3 +28,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/credentials.yml.enc
+.env
