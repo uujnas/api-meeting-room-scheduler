@@ -1,5 +1,5 @@
 class MemberMailer < ApplicationMailer
-  default from: 'sanju@gmail.com'
+  default from: 'shresthabikash2073@gmail.com'
 
   def members_added_on_meeting(member, meeting)
     @member = member
