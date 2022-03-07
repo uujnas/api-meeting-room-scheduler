@@ -61,8 +61,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  Shoulda::Matchers.configure do |config_|
+    config_.integrate do |with|
       with.test_framework :rspec
       with.library :rails
     end
@@ -99,5 +99,11 @@ RSpec.configure do |config|
     room = Room.new(desc: 'room desc', user: create_user)
     room.save
     room
+  end
+
+  def create_meeting 
+    meeting = Meeting.new( subject: 'ROR Highlights', room: create_room)
+    meeting.save
+    meeting
   end
 end
