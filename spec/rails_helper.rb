@@ -94,4 +94,10 @@ RSpec.configure do |config|
     post '/users/sign_in', params: { user: { email: login, password: 'password' } }, headers: headers
     JSON.parse(response.body)
   end
+
+  def create_room
+    room = Room.new(desc: 'room desc', user: create_user)
+    room.save
+    room
+  end
 end
