@@ -1,4 +1,4 @@
-**Meeting Room Scheduler**
+## Meeting Room Scheduler
 
 **Overview**
 Meeting room scheduler offers an impromptu meeting management tool. This tool for scheduling meetings provides a mechanism for better time planning and utilization. Availability of meeting schedulers eases the scheduling process and hikes productivity.
