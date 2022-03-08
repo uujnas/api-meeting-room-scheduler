@@ -1,3 +1,8 @@
+# The SessionController extends Devise::SessionController.
+##
+## It is used for User Login and Log out.
+## POST /users/sign_in
+## DELETE /users/sign_out
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
 
