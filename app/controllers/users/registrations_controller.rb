@@ -1,3 +1,9 @@
+# The RegistrationController extends Devise::RegistrationController
+# It is used for handling User CRUD.
+## POST /users
+## GET /users
+## PUT/PATCH /users
+## DELETE /users
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
