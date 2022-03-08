@@ -1,24 +1,34 @@
-# README
+**Meeting Room Scheduler**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Overview**
+Meeting room scheduler offers an impromptu meeting management tool. This tool for scheduling meetings provides a mechanism for better time planning and utilization. Availability of meeting schedulers eases the scheduling process and hikes productivity.
 
-Things you may want to cover:
+*Required ruby version 3.0.1*
 
-* Ruby version
+**instruction to run the application**
+`bundle install`
+`rails db:create db:migrate` 
+and then `rails server` or `rails s`
 
-* System dependencies
+**run application through docker**
+1. Make sure that docker is installed in your machine
+2. Check `docker --version`
+3. Install docker compose
+  for linux
+    ` sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+    and
+    `sudo chmod +x /usr/local/bin/docker-compose`
 
-* Configuration
+4. Builds project images
+    `docker-compose build`
+5. Boots up the app
+    `docker-compose up`
+6. Create databases
+  `docker-compose run rake db:create`
+7. Run migrations
+  `docker-compose run web rake db:migrate`
+8. you can run your app at `localhost:3000`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<br><br>
+*rdoc*
+[documentation](https://meeting-room-scheduler-docs.web.app/MeetingsController.html)
